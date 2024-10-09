@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update a user</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <center>
+    <h1>Update a user</h1>
+    <form method="POST" action="{{ url_for('update', id=user.id) }}">
+        <p>Name: <input type="text" name="name" value="{{ user.name }}" required></p>
+        <p>Email: <input type="email" name="email" value="{{ user.email }}" required></p>
+        <p><input type="submit" value="Update"></p>
+    </form>
+    <!-- Use a form with a button instead of a link -->
+    <form>
+        <!-- Use formaction and formmethod attributes to specify the URL and the HTTP method -->
+        <button type="submit" formaction="{{ url_for('index') }}" formmethod="GET">Back to home page</button>
+    </form>
+</center>
+</body>
+</html>
+

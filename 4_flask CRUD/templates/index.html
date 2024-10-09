@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WELCOME TO FLASK WITH SQL ALCHEMY APPLICATION</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <center>
+    <h1>WELCOME TO FLASK WITH SQL ALCHEMY APPLICATION</h1>
+    <!-- Use a form with a button instead of a link -->
+    <form>
+        <!-- Use formaction and formmethod attributes to specify the URL and the HTTP method -->
+        <button type="submit" formaction="{{ url_for('create') }}" formmethod="GET">Create a new user</button>
+    </form>
+
+    <table border="4">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <!-- Use a form with buttons instead of links -->
+                <form>
+                    <!-- Use formaction and formmethod attributes to specify the URL and the HTTP method -->
+                    <button type="submit" formaction="{{ url_for('update', id=user.id) }}" formmethod="GET">Update</button> |
+                    <button type="submit" formaction="{{ url_for('delete', id=user.id) }}" formmethod="GET">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+</body>
+</html>
+
